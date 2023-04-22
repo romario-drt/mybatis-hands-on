@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.romario.java_persistence_mybatis_practice.repository.AddressMapper">
+
+    <resultMap type="Address" id="AddressResult">
+        <id property="id" column="stud_id"/>
+        <result property="street" column="street"/>
+        <result property="city" column="city"/>
+        <result property="state" column="state"/>
+        <result property="zip" column="zip"/>
+        <result property="country" column="country"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="AddressResult">
+        SELECT * FROM Address
+    </select>
+
+    <select id="findById" parameterType="int" resultMap="AddressResult">
+        SELECT * FROM Address WHERE id = #{Id}
+    </select>
+
+    <insert id="save" parameterType="Address">
+        INSERT INTO Address(STREET, CITY, STATE, ZIP,COUNTRY)
+        VALUES (#{street}, #{city}, #{state}, #{zip}, #{country})
+    </insert>
+
+</mapper>

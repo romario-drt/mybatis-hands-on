@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+
+        <!-- single object -->
+        <!-- <typeAlias alias="Student" type="com.romario.java_persistence_mybatis_practice.model.entity.Student"/> -->
+        <!-- we can also use package scan for all objects at once -->
+        <package name="com.romario.java_persistence_mybatis_practice.model.entity"/>
+
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="org.postgresql.Driver"/>
+                <property name="url" value="jdbc:postgresql://localhost:5432/java_persistence_mybatis"/>
+                <property name="username" value="postgres"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mapper/StudentMapper.xml"/>
+        <mapper resource="mapper/AddressMapper.xml"/>
+    </mappers>
+</configuration>
